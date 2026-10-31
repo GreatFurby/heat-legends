@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#172023">
+  <meta name="description" content="Nine colours. Ten cards. A simple offline Legends deck for your physical game of HEAT.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>HEAT Legends — Nine-Car Deck</title>
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <a class="wordmark" href="./" aria-label="HEAT Legends home">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 6h10l-5 12h8l5-12h10L24 34H14l5-12h-8L6 34H-4Z"/></svg>
+        <span><span class="brand-title">HEAT <span>LEGENDS</span></span><span class="brand-subtitle">NINE-CAR DIGITAL DECK</span></span>
+      </a>
+      <button class="text-button new-game" id="new-game" hidden>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 10a8 8 0 1 1 1.5 7M4 4v6h6"/></svg>
+        <span>New game</span>
+      </button>
+    </header>
+
+    <main>
+      <section id="start-screen" class="start-screen" aria-labelledby="start-title">
+        <div class="deck-cover" aria-hidden="true">
+          <div class="cover-topline"><span>THE LEGENDS SERIES</span><span>09 / 10</span></div>
+          <div class="cover-art">
+            <svg class="cover-helmet" viewBox="0 0 160 160"><path d="M28 130V79C28 39 49 18 80 18s52 21 52 61v51l-22 12-12-34H62l-12 34Z" fill="none" stroke="currentColor" stroke-width="6" stroke-linejoin="round"/><path d="M38 69h84v24l-24 10H62L38 93Z" fill="currentColor"/><path d="M72 22h16v32H72Z" fill="currentColor"/><path d="M64 122h32M69 132h22" stroke="currentColor" stroke-width="4"/></svg>
+            <span class="cover-title">LEGENDS</span>
+            <span class="cover-caption">NINE COLOURS. ONE GRID.</span>
+          </div>
+          <div class="grid-colours" id="cover-colours"></div>
+          <div class="cover-bottomline"><span>9 CARS</span><span class="cover-line"></span><span>10 CARDS</span></div>
+        </div>
+        <div class="start-copy">
+          <p class="eyebrow"><span></span> READY WHEN YOU ARE</p>
+          <h1 id="start-title">Meet your<br><em>competition.</em></h1>
+          <p class="start-description">Your Legends deck, with all nine colours.<br>Start the race. Tap the card. Keep moving.</p>
+          <button class="start-button" id="start">Start <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button>
+          <p class="start-footnote">No setup. Just shuffle and race.</p>
+        </div>
+      </section>
+
+      <section id="game-screen" class="game-screen" aria-label="Legends deck" hidden>
+        <div class="deck-caption"><span><span class="live-dot"></span> YOUR LEGENDS</span><span id="card-counter">Card 1 / 10</span></div>
+        <button id="race-card" class="legend-card" type="button" aria-describedby="draw-hint">
+          <span class="card-rim"><span>LEGENDS</span><span>NINE-CAR EDITION</span></span>
+          <span class="bonus-grid" id="bonus-grid"></span>
+        </button>
+        <div class="deck-controls">
+          <button class="text-button undo-button" id="undo" disabled><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m9 5-6 6 6 6M3 11h11a6 6 0 0 1 6 6"/></svg>Undo</button>
+          <p id="draw-hint"><span class="tap-glyph" aria-hidden="true">↗</span> Tap the card to draw next</p>
+          <span class="deck-detail" aria-hidden="true">9 CARS · 10 CARDS</span>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer"><span>MADE FOR THE TABLE.</span><span id="offline-status" class="offline-status" role="status"><span></span> Preparing offline deck</span></footer>
+  </div>
+  <div class="notice" id="notice" role="status" hidden></div>
+  <span class="sr-only" id="announcement" role="status" aria-live="polite"></span>
+
+  <dialog id="new-game-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <form method="dialog">
+      <span class="dialog-eyebrow">FRESH GRID</span>
+      <h2 id="dialog-title">Start a new game?</h2>
+      <p id="dialog-description">This will clear your current deck and undo history, then shuffle all 10 cards.</p>
+      <div class="dialog-actions"><button value="cancel" class="cancel-button" autofocus>Keep racing</button><button value="new" class="confirm-button">New game</button></div>
+    </form>
+  </dialog>
+  <noscript><div class="notice">Enable JavaScript to use the Legends deck. No internet connection is needed after the first load.</div></noscript>
+</body>
+</html>
